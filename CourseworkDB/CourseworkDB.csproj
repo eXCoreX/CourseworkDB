@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Images\auto-transmission.png" />
+    <None Remove="Resources\Images\car-body.png" />
+    <None Remove="Resources\Images\car-engine.png" />
+    <None Remove="Resources\Images\jerrycan.png" />
+    <None Remove="Resources\Images\manual-transmission.png" />
+    <None Remove="Resources\Images\speedometer.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\auto-transmission.png" />
+    <Resource Include="Resources\Images\car-body.png" />
+    <Resource Include="Resources\Images\car-engine.png" />
+    <Resource Include="Resources\Images\jerrycan.png" />
+    <Resource Include="Resources\Images\manual-transmission.png" />
+    <Resource Include="Resources\Images\speedometer.png" />
+  </ItemGroup>
+
+</Project>

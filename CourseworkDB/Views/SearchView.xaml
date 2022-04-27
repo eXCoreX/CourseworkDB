@@ -1,0 +1,165 @@
+﻿<UserControl x:Class="CourseworkDB.Views.SearchView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CourseworkDB.Views" 
+             xmlns:viewmodels="clr-namespace:CourseworkDB.ViewModels" 
+             d:DataContext="{d:DesignInstance Type=viewmodels:SearchViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             d:Background="White">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="75"/>
+        </Grid.RowDefinitions>
+
+
+        <ScrollViewer Grid.Row="0">
+            <Grid Margin="10">
+                <StackPanel Orientation="Vertical">
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Height="20" VerticalAlignment="Top" Text="Body" />
+
+                        <Grid Grid.Column="1">
+                            <ItemsControl ItemsSource="{Binding Bodies}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Margin="10, 0, 10, 10" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="10, 0, 10, 10" Height="20" VerticalAlignment="Top" Width="100">
+                                            <CheckBox Content="{Binding Item.Name}" IsChecked="{Binding IsSelected}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Grid>
+                    </Grid>
+
+                    <Separator />
+
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="Fuel" />
+
+                        <Grid Grid.Column="1">
+                            <ItemsControl ItemsSource="{Binding FuelTypes}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Margin="10, 0, 10, 10" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="10, 0, 10, 10" Height="20" VerticalAlignment="Top" Width="100">
+                                            <CheckBox Content="{Binding Item.Name}" IsChecked="{Binding IsSelected}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Grid>
+                    </Grid>
+
+                    <Separator />
+
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="Transmission" />
+
+                        <Grid Grid.Column="1">
+                            <ItemsControl ItemsSource="{Binding Transmissions}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Margin="10, 0, 10, 10" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="10, 0, 10, 10" Height="20" VerticalAlignment="Top" Width="100">
+                                            <CheckBox Content="{Binding Item.Name}" IsChecked="{Binding IsSelected}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Grid>
+                    </Grid>
+
+                    <Separator />
+
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="Color" />
+
+                        <Grid Grid.Column="1">
+                            <ItemsControl ItemsSource="{Binding Colors}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Margin="10, 0, 10, 10" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="10, 0, 10, 10" Height="20" VerticalAlignment="Top" Width="100">
+                                            <CheckBox Content="{Binding Item.Name}" IsChecked="{Binding IsSelected}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Grid>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Separator Grid.Row="0" VerticalAlignment="Top" />
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="258" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="164" />
+                </Grid.ColumnDefinitions>
+
+                <Button Margin="16" Command="{Binding ShowCommand}">
+                    <TextBlock Text="{Binding AdvertsCount, StringFormat=Show {0} cars}" />
+                </Button>
+
+                <Button Grid.Column="2" Margin="16" Command="{Binding AddAdvertCommand}">
+                    <TextBlock Text="Add advert" />
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

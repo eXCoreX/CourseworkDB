@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="CourseworkDB.Views.AdvertView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CourseworkDB.Views" 
+             xmlns:global="clr-namespace:CourseworkDB" 
+             d:DataContext="{d:DesignInstance Type=global:Advert}"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Margin="10" Width="500">
+        <StackPanel Orientation="Vertical">
+            <TextBlock FontSize="28">
+                <Run Text="{Binding Vehicle.Model.Brand.Name}" />
+                <Run Text="{Binding Vehicle.Model.Name}" />
+                <Run Text="{Binding Vehicle.ProductionYear}" />
+            </TextBlock>
+            
+            <TextBlock Margin="0,4,0,0" Text="{Binding Price, StringFormat={}{0:C}}" FontSize="24" Foreground="Green" />
+            
+            <StackPanel Margin="0,24,0,0" Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Width="200" Orientation="Horizontal">
+                        <Image Source="{StaticResource speedometer}" Width="32" Height="32" />
+                        <TextBlock Margin="8, 0, 0, 0" Text="{Binding Vehicle.Mileage, StringFormat={}{0:N0} Km}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" />
+                    </StackPanel>
+                    <StackPanel Width="200" Orientation="Horizontal">
+                        <Image Source="{StaticResource car-engine}" Width="32" Height="32" />
+                        <TextBlock Margin="8, 0, 0, 0" Text="{Binding Vehicle.Power, StringFormat={}{0:0.#} HP}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Margin="0,16,0,0" Orientation="Horizontal">
+                    <StackPanel Width="200" Orientation="Horizontal">
+                        <Image Source="{StaticResource jerrycan}" Width="32" Height="32" />
+                        <TextBlock Margin="8, 0, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" >
+                            <Run Text="{Binding Vehicle.FuelType.Name, StringFormat={}{0}\,}" />
+                            <Run Text="{Binding Vehicle.Displacement, StringFormat={}{0:0.0#} L}" />
+                        </TextBlock>
+                    </StackPanel>
+
+                    <StackPanel Width="200" Orientation="Horizontal">
+                        <Image Width="32" Height="32">
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Source" Value="{StaticResource auto-transmission}" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Vehicle.Transmission.Name}" Value="Manual">
+                                            <Setter Property="Source" Value="{StaticResource manual-transmission}" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                        
+                        <TextBlock Margin="8, 0, 0, 0" Text="{Binding Vehicle.Transmission.Name}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Margin="0,16,0,0" Orientation="Horizontal">
+                    <StackPanel Width="200" Orientation="Horizontal">
+                        <Border BorderBrush="Black" BorderThickness="1" Width="32" Height="32">
+                            <Rectangle Width="20" Height="20" Fill="{Binding Vehicle.Color.Name}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </Border>
+                        <TextBlock Margin="8, 0, 0, 0" Text="{Binding Vehicle.Color.Name}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" />
+                    </StackPanel>
+
+                    <StackPanel Width="200" Orientation="Horizontal">
+                        <Image Source="{StaticResource car-body}" Width="32" Height="32" />
+                        <TextBlock Margin="8, 0, 0, 0" Text="{Binding Vehicle.Body.Name}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" />
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+
+            <TextBlock Margin="0,24,0,0" TextWrapping="Wrap" FontSize="18" MaxHeight="90">
+            <Run Text="Description:" />
+            <Run Text="{Binding Description}" />
+            </TextBlock>
+
+            <TextBlock Margin="0,16,0,0" Grid.Row="4" FontSize="18">
+            <Run Text="{Binding User.Name, StringFormat={}{0}\,}" />
+            <Run Text="{Binding User.Phone}" />
+            </TextBlock>
+
+            <Separator Margin="0,24,0,0" Grid.Row="5" />
+        </StackPanel>
+    </Grid>
+</UserControl>
